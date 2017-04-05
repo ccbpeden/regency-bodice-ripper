@@ -17,28 +17,16 @@ import { FirebaseObjectObservable } from 'angularfire2';
 export class ContinueStoryComponent implements OnInit{
 option;
 storyOption:string = null;
-optionA;
-optionB;
 
   ngOnInit(){
     console.log("initializing");
-    // this.options = this.optionService.getOptions();
-    // this.storyOption = null;
     this.route.params.forEach((urlParameters) => {
       this.storyOption = urlParameters['id'];
-      console.log(this.storyOption);
     });
-    this.option = this.optionService.getOptionById(this.storyOption);
-    console.log(this.option);
-    this.optionA = this.option.optionA;
-    this.optionB = this.option.optionB;
-    console.log(this.optionA);
-      // for(var index = 0; index < this.options.length; index++){
-      //   if (this.options[index].id === this.storyOption){
-      //     this.option = this.options[index];
-      //     console.log(this.option);
-        // }
-    // }
+    this.optionService.getOptionById(this.storyOption).subscribe(dataLasEmittedFromObserver => {
+      this.option = dataLasEmittedFromObserver;
+      console.log(this.option);
+    });
   }
 
   ngDoCheck(){
@@ -46,15 +34,16 @@ optionB;
   }
 
   goToStoryA(option){
-    option = option.$key;
-    this.optionA = this.option.optionA;
-    this.optionB = this.option.optionB;
     this.router.navigate(['continue-story', option.storyA]);
-    this.option = this.optionService.getOptionById(this.storyOption);
+    this.optionService.getOptionById(this.storyOption).subscribe(dataLasEmittedFromObserver => {
+      this.option = dataLasEmittedFromObserver;
+    });
   }
   goToStoryB(option){
     this.router.navigate(['continue-story', option.storyB]);
-    this.option = this.optionService.getOptionById(this.storyOption);
+    this.optionService.getOptionById(this.storyOption).subscribe(dataLasEmittedFromObserver => {
+      this.option = dataLasEmittedFromObserver;
+    });
   }
   constructor(private router: Router, private route: ActivatedRoute, private location: Location, private optionService:OptionService) {}
 }

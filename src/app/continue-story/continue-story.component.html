@@ -1,10 +1,9 @@
-<h2>{{(option | async)?.title}}</h2>
-<h3>{{(option | async)?.story}}</h3>
-<h4>{{(option | async)?.id}}</h4>
-<h1>{{(option | async)?.$key}}</h1>
+<h2>{{option?.title}}</h2>
+<h3>{{option?.story}}</h3>
+
 <div class=""(click)="goToStoryA(option)">
-  <h3>hi there {{(option | async)?.storyA}}</h3>
+  <h3>hi there {{option?.storyA}}</h3>
 </div>
 <div class=""(click)="goToStoryB(option)">
-  <h3>hi there {{(option | async)?.storyB}}</h3>
+  <h3>hi there {{option?.storyB}}</h3>
 </div>
