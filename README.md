@@ -22,7 +22,7 @@ You will need the following software properly installed on your computer.
 If you wish to run the app locally, please follow the following instructions
 
 * `git clone https://github.com/ccbpeden/regency-bodice-ripper.git` this repository
-* `cd senator-stable`
+* `cd regency-bodice-ripper`
 * `npm install`
 * `bower install`
 * place the api-keys.ts file provided to you by the author in the regency-bodice-ripper/src/app folder
